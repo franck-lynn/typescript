@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    // 由于  "module": "ESNext",  在 webpack 上运行不了, 改为 mommon.js.
+    // 再在 rollup 中进行覆盖
+    "module": "esnext", 
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "jsx": "preserve", 
+    "isolatedModules": true,
+    "declaration": true,  
+    "declarationMap": true,               
+    "sourceMap": true,                  
+    "removeComments": true, 
+    "strict": true,  
+    "moduleResolution": "node",       
+    "baseUrl": "./",        
+    "paths": { 
+      "typings/*": ["typings/*"] // 相对路径, 如果不设置 baseUrl, 则要加 ./
+    },  
+    "types": [ "vite/client"], 
+    "allowSyntheticDefaultImports": true, 
+    "esModuleInterop": true, 
+    
+    "skipLibCheck": true, 
+    "forceConsistentCasingInFileNames": true 
+  },
+   
+}

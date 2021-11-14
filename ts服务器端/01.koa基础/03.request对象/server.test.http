@@ -1,0 +1,44 @@
+
+### 
+GET http://localhost:3000 HTTP/1.1
+
+
+### 请行字符串对象 query
+GET http://localhost:3000/?name=zhangsan&&age=23 HTTP/1.1
+
+### 请求字符串 querystring
+GET http://localhost:3000/?name=zhangsan&&age=23 HTTP/1.1
+
+### 请求路径
+# GET http://localhost:3000/path?name=zhangsan&&age=23 HTTP/1.1
+
+
+
+
+### 请求参数
+GET http://localhost:3000/params1/params2 HTTP/1.1
+
+
+
+
+### 请求头
+GET http://localhost:3000/?name=zhangsan&&age=23 HTTP/1.1
+Content-Type: application/json  
+Authorization: Token xxx
+
+
+### head 请求方法. 只有判断服务器是不是正常, 不要返回数据
+# 适用于判断, 但是webserver未必允许和支持
+HEAD  http://localhost:3000/  HTTP/1.1
+
+### options 请求, 返回服务器可以使用的方法
+OPTIONS http://localhost:3000/  HTTP/1.1
+
+
+
+
+
+
+
+
+

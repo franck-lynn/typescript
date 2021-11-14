@@ -1,0 +1,12 @@
+{
+  "name": "quick-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env MODE=production vite build",
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "koa-server",
+  "version": "1.0.0",
+  "description": "ts node 环境搭建",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.ts",
+    "build": "tsc -p app.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}

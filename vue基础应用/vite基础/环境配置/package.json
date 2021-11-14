@@ -1,0 +1,13 @@
+{
+  "name": "quick-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env MODE=development vite",
+    "build": "rimraf dist && rimraf node_modules && cross-env MODE=production vite build",
+    "serve": "vite preview"  
+  },
+  "author": "",
+  "license": "ISC"
+}

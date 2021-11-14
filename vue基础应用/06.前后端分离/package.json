@@ -1,0 +1,13 @@
+{
+  "name": "node-study",
+  "version": "1.0.0",
+  "description": "my-study",
+  "author": "lynn",
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite client --config client/vite.config.ts",
+    "server": "nodemon -r esm server/app.ts --watch server --max_old_space_size=10240",
+    "comments-A": "一起运行", 
+    "test": "concurrently \"rimraf client/node_modules\"  \"npm run dev\"  \"npm run server\""
+  }
+}

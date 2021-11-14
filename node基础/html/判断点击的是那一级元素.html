@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>判断点击的是那一级元素</title>
+        <style>
+            .level-1 {
+                display: flex; /* div */
+                width: 200px;
+                height: 200px;
+                border: 2px solid red;
+            }
+            .level-2 {
+                /* ul */
+                border: 2px solid #19a18f;
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100px;
+            }
+            .level-3 {
+                /* li */
+                border: 2px solid #19a18f;
+                /* list-style-type: none; */
+                width: 100%;
+                height: 50px;
+            }
+            .level-4 {
+                /* div */
+                border: 4px solid #a11958;
+                width: 100%;
+                /* list-style-type: none; */
+            }
+           .level-5-1{
+            display: flex;
+                width: 100%;
+                height: 50px;
+                background-color: pink;
+           }
+            .level-6 {
+                display: flex;
+                width: 100%;
+                height: 50px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="level-1">
+            <div class="level-2">
+                <div class="level-3">
+                    <div class="level-4">
+                        <span class="level-5-1">
+                            <a href="#" class="level-6-1">链接标签的点击</a>
+                        </span>
+                    </div>
+                </div>
+                <li class="level-3">
+                    <div class="level-4">
+                        <span class="level-5-1">
+                            <a href="#" class="level-6-1">链接标签的点击A</a>
+                        </span>
+                    </div>
+                </li>
+            </div>
+        </div>
+        <script>
+            // 块级元素和行内元素区别:
+            // 行内元素只能设置文本或者其他行内元素, 宽度无效, margin,
+            // padding无效
+            document.querySelector(".level-5-1").addEventListener("click", function(e) {
+                // console.log("点击", e.target)
+                console.log("点击", e.currentTarget=== this)
+            })
+        </script>
+    </body>
+</html>

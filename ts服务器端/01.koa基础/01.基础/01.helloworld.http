@@ -1,0 +1,4 @@
+@url = http://localhost:3000 
+### 01.helloworld.ts, 02.级联.ts 均可测试
+GET {{url}} HTTP/1.1
+

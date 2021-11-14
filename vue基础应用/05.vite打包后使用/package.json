@@ -1,0 +1,14 @@
+{
+  "name": "quick-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env MODE=production vite build",
+    "dev": "vite",
+    "server": "nodemon -r esm server/vite打包后给服务器使用.ts --watch server --max_old_space_size=10240",
+    "start": "rimraf server/static && rimraf server/index.html && npm run build && npm run server"
+  },
+  "author": "",
+  "license": "ISC"
+}

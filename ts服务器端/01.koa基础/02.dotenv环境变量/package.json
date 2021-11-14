@@ -1,0 +1,13 @@
+{
+  "name": "env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exec:mode-window": "set MODE=development && ts-node execute-env.ts",
+    "exec:mode-platform": "cross-env MODE=delvelopment ts-node execute-env.ts",
+    "load:mode": "ts-node load-env.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
