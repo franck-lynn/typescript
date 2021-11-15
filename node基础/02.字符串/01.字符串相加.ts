@@ -13,6 +13,8 @@ const addStrings = (...strs: string[]): string => {
 //     addStrings('a', 'b', 'c', 'd')
 // )
 
+
+// 调用字符串相加
 const callAddStrings = (...values: string[]): void => {
     const result = addStrings(...values)
     console.log(result)
