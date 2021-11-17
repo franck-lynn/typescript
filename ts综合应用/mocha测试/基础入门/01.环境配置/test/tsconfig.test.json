@@ -1,0 +1,10 @@
+{
+    "comment": [
+        "extends 项是与根目录下的 tsconfig 进行组合",
+        "根目录下的 tsconfig.json 是用 tsc --init 命令自动生成的"
+    ],
+    "extends": "../tsconfig.json", 
+    "ts-node": {
+        "transpileOnly": true
+    }
+}

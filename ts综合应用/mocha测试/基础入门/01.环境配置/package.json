@@ -1,0 +1,24 @@
+{
+  "name": "macha_env",
+  "version": "1.0.0",
+  "description": "",
+  "comment": [
+    "注释行: ", 
+    "cover 执行 npm run cover 将在根目录下生成测试覆盖率报告，访问 coverage\\index.html 即可查看",
+    "ts-node/register 用于执行 ts 测试代码", 
+    " tsconfig-paths/register 则用于解析 tsconfig 里配置的路径别名"
+  ], 
+  "scripts": {
+    "test": "cross-env TS_NODE_PROJECT='test/tsconfig.test.json' mocha test/**/**.test.ts", 
+    "cover": "nyc --reporter=html npm run test"
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register", 
+      "tsconfig-paths/register"
+    ], 
+    "ui": "bdd"
+  }, 
+  "author": "",
+  "license": "ISC"
+}
