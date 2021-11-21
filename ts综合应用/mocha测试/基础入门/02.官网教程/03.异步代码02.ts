@@ -1,7 +1,7 @@
 import { expect } from "chai"
 // import fetch from 'node-fetch'
 
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+// const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 // import('node-fetch').then(v => console.log(v))
 // ('https://api.gethub.com').then(v => console.log(v))
 
