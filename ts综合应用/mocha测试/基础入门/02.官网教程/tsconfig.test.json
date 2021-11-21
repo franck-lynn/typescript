@@ -7,6 +7,5 @@
     "ts-node": {
         "transpileOnly": true,
         
-    },
-    "loader": "ts-node/esm"
+    }
 }
