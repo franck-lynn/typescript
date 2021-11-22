@@ -1,0 +1,8 @@
+.vscode
+笔记
+config
+node_modules
+
+**/*/node_modules
+**/*/.nyc_output
+**/*/coverage
