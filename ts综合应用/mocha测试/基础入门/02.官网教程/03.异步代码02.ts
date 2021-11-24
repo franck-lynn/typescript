@@ -1,5 +1,5 @@
 import { expect } from "chai"
-// import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 // const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 // import('node-fetch').then(v => console.log(v))
@@ -23,6 +23,7 @@ describe("异步代码测试", function () {
         setTimeout(f, 2000)
     })
     
+<<<<<<< HEAD
 //     it('异步请求返回一个对象', function (done){
 //         // 浏览器提供了这个对象, 但是node并没有
 //         fetch('https://api.gethub.com').then(function (res){
@@ -34,6 +35,17 @@ describe("异步代码测试", function () {
     
     
     
+=======
+    it('异步请求返回一个对象', function (done){
+        // 浏览器提供了这个对象, 但是node并没有
+        fetch('https://api.github.com/users/defunkt').then(function (res){
+            console.log(res)
+            expect(res).to.be.an('object')
+            done()
+        })
+    })
+     
+>>>>>>> c9a04705a894ee85a76e946856ecf14f825687fe
 })
 
 
