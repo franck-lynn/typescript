@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { spy } from 'sinon'
+// import { spy } from 'sinon'
 
 /**
  * 测试函数
