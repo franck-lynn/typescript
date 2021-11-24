@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "esModuleInterop": true,
+        "target": "esnext",
+        "module": "esnext",
+        "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true, 
         "moduleResolution": "node",
         "strict": true,  
         "skipLibCheck": true,
-        "baseUrl": "./"
+        "baseUrl": "./",
+        "outDir": "dist",
+        "rootDir": "./",
     }
 }
 

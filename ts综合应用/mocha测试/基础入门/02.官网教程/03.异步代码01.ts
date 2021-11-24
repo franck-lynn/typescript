@@ -23,9 +23,11 @@ describe('User', function (){
         it('should save without error', function (done){
             const user = new User({name: 'Luna'})
             user.save((err: mongoose.CallbackError ) => {
+                mongoose.disconnect()
                 if(err) done(err)
                 else done()
             })
+          
         })
     })
 })
