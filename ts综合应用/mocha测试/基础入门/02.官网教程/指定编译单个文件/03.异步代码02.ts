@@ -1,6 +1,6 @@
 import { expect } from "chai"
 // 这是一个 esm 模块, 如何在 mocha 中得到支持?
-// import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 // const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 // import('node-fetch').then(v => console.log(v))
@@ -24,14 +24,14 @@ describe("异步代码测试", function () {
         setTimeout(f, 2000)
     })
 
-    // it('异步请求返回一个对象', function (done){
-    //     // 浏览器提供了这个对象, 但是node并没有
-    //     fetch('https://api.github.com/users/defunkt').then(function (res){
-    //         res.json().then(v => console.log(v))
-    //         expect(res).to.be.an('object')
-    //         done()
-    //     })
-    // })
+    it('异步请求返回一个对象', function (done){
+        // 浏览器提供了这个对象, 但是node并没有
+        fetch('https://api.github.com/users/defunkt').then(function (res){
+            res.json().then(v => console.log(v))
+            expect(res).to.be.an('object')
+            done()
+        })
+    })
      
     
 })

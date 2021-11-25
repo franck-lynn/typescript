@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "esModuleInterop": false,
+        "forceConsistentCasingInFileNames": true, 
+        "moduleResolution": "node",
+        "strict": true,  
+        "skipLibCheck": true,
+        "baseUrl": "./",
+        "outDir": "dist",
+        "rootDir": "./",
+    },
+    // 指定编译 单个文件
+    "files": ["03.异步代码02.ts"]
+}
+
