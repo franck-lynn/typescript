@@ -1,15 +1,15 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "esModuleInterop": false,
+        "target": "es6",
+        "module": "commonjs",
+        "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true, 
         "moduleResolution": "node",
         "strict": true,  
         "skipLibCheck": true,
         "baseUrl": "./",
         "outDir": "dist",
-        "rootDir": "./",
-    }
+        "rootDir": "src",
+    },
 }
 
