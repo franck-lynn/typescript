@@ -37,4 +37,5 @@ beforeEach(function () {
 //         // 判断
 //     })
 // })
+// https://segmentfault.com/a/1190000011362879
 // mocha --require ts-node/register 04.使用AsyncAwait.ts
