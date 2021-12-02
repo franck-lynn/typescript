@@ -149,6 +149,29 @@ import {APP_PORT} from './config/config.default'
 
 # 四. 添加路由, 处理不同的 url 请求
 
+路由: 根据不同的 url, 调用对应处理的函数
+
+安装路由处理的包 @koa/router
+
+```bash
+npm install koa-router
+```
+
+操作步骤
+
+```ts
+// 1. 实例化一个路由对象
+const router = new Router()
+// 2. 编写路由 
+router.get("/", async(ctx, next) => {
+    ...
+})
+
+// 3. 注册中间件, use 需要接受一个函数, 而不能是一个对象
+app.use(router.routes()) // 有很多的函数, 所以是 routes()
+app.use(router.allowedMethods())
+```
+
 
 
 

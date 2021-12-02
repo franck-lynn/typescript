@@ -6,7 +6,7 @@ import Router from '@koa/router'
 import bodyParser from 'koa-body'
 // 处理静态文件, 静态文件夹一般放是项目文件根目录下的 public
 import koaStatic from 'koa-static'
-import logging from './config/looging'
+import logging from './config/logging'
 import config from './config/config'
 
 
