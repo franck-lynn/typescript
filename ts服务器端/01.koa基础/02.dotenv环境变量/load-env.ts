@@ -2,5 +2,7 @@
 import dotenv from 'dotenv'
 dotenv.config({path: '.env'})
 console.log(
-    "读取到的环境变量", process.env.MODE
+    "读取到的环境变量", process.env.NODE
 )
+const NODE = process.env.Node
+export { NODE }
