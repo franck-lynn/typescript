@@ -1,16 +1,17 @@
 // 动态的模块加载
 // 被加载的文件导出是有要求的, 只能导出一个,export default xxx 或者 export {} 都可以
-import Koa from 'koa'
-import Router from '@koa/router'
-import fs from 'fs'
-import path from 'path'
+// import Koa from 'koa'
+// import Router from '@koa/router'
+import fs from "fs"
+import path from "path"
 
-const readfiles = (dir: string, ignore: string | null = null, list: string[] = [], deep = 0) => {
-    const files = fs.readdirSync(dir, 'utf-8')
+const readFilesName = (dir: string, ignore: string | null = null, list: string[] = [], deep = 0) => {
+    // 读取文件目录
+    const files = fs.readdirSync(dir, "utf-8")
     for (let i = 0; i < files.length; i++) {
         const stat = fs.statSync(dir + path.sep + files[i])
         if (stat.isDirectory()) {
-            readfiles(dir + path.sep + files[i], ignore, list, deep + 1)
+            readFilesName(dir + path.sep + files[i], ignore, list, deep + 1)
         } else {
             // 忽略掉第1层的要忽略的文件, 如不需要这个功能, 去掉 deep 即可
             // 数组, 字符串忽略都可以
@@ -20,13 +21,11 @@ const readfiles = (dir: string, ignore: string | null = null, list: string[] = [
     }
     return list
 }
-console.log(
-    readfiles(__dirname, null, ['index.ts'] )
-)
+console.log(readFilesName(__dirname, "index.ts"))
 
 // 动态导入模块
 // const loader = (dir: string, ignore: string | null = null, list: string[] = [], deep = 0) => {
-//     const files = readfiles(dir, ignore, list, deep)
+//     const files = readFilesName(dir, ignore, list, deep)
 //     return files.map(filename => {
 //         if (!/\.ts$/.test(filename)) return
 //         // eslint-disable-next-line @typescript-eslint/no-var-requires
