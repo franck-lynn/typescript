@@ -18,3 +18,5 @@ console.log(
     "\n",
     reg.exec('.nb3'),
 )
+
+export {reg}
