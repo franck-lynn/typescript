@@ -3,7 +3,6 @@ import Router from "@koa/router"
 import fs from "fs"
 import path from "path"
 
-
 const readFilesName = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
     // 读取文件目录
     const files = fs.readdirSync(dir)
@@ -25,29 +24,35 @@ const readFilesName = (dir: string, ignore?: string[] | null, list: string[] = [
     return list
 }
 // 动态导入模块, 并将这些模块放在一个数组里面
-const loader =  (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
+const loader = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
     // 获取文件名
-    const files =  readFilesName(dir, ignore, list, deep)
-    
-    return files.map((filename) => {
-        console.log(filename)
+    const files = readFilesName(dir, ignore, list, deep)
+    // console.log(files)
+    return files.map(async (filename: string) => {
+        // console.log(filename)
         // 如果不是ts 文件就返回
         // if(/(?!.ts$)/.test()) return
         // console.log(filename)
-        // const rs = require(filename)
-        // return rs[Object.keys(rs)[0]]
+        // const rs = await import("./index")
+        // 返回 Promise 数组
+        return  await import("./index")
+       
+        // console.log(rs)
     })
 }
-loader(__dirname, ["index.ts"])
+// console.log(
+//     loader(__dirname, ["index.ts"])
+// )
 
 
-// const routes = (/* app: Koa<Koa.DefaultState, Koa.DefaultContext> */) => {
-//     const routers =  loader(__dirname, ["index.ts"])
-//     console.log(routers)
-//     // routers.forEach(router => {
-//     //     console.log(router)
-//     // })
-    
-// }
-// routes()
+const routes = (app?: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
+    const routers =  loader(__dirname, ["index.ts"])
+    // console.log(routers)
+    routers.forEach(router => {
+        router.then(r => {
+            console.log(r)
+        })
+    })
 
+}
+routes()
