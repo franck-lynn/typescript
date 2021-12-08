@@ -49,9 +49,8 @@ const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, ignore: string[]
     objectRouters.forEach((routerPromise: Promise<ObjectRouter>) => {
         routerPromise.then((routerObj: ObjectRouter) => {
             let router: Router<Koa.DefaultState, Koa.DefaultContext>
-            if (!routerObj || (!routerObj.default && !routerObj.Router)) {
-                return
-            }
+            // 如果是空对象, 或者不是空对象, 但是同时没有 default 和 Router 属性, 就返回
+            if (!(Object.keys(routerObj).length===0) || (!routerObj.default && !routerObj.Router)) return
             if (Reflect.has(routerObj, "default")) {
                 router = routerObj.default!
             } else {
