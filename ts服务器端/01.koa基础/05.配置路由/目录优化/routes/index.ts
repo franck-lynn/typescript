@@ -38,26 +38,21 @@ const loader = (dir: string, ignore?: string[] | null, list: string[] = [], deep
     })
 }
 
-interface ObjectRouter {
-    default?: Router<Koa.DefaultState, Koa.DefaultContext>
-    Router?: Router<Koa.DefaultState, Koa.DefaultContext>
-}
-
 // 默认忽略掉 index.ts 文件
 const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, ignore: string[] = ["index.ts"]) => {
     const objectRouters = loader(__dirname, ignore)
-    objectRouters.forEach((routerPromise: Promise<ObjectRouter>) => {
-        routerPromise.then((routerObj: ObjectRouter) => {
+    objectRouters.forEach((routerPromise: Promise<Record<string, Router<Koa.DefaultState, Koa.DefaultContext>>>) => {
+        routerPromise.then((routerObj: Record<string, Router<Koa.DefaultState, Koa.DefaultContext>>) => {
             let router: Router<Koa.DefaultState, Koa.DefaultContext>
-            // 如果是空对象, 或者不是空对象, 但是同时没有 default 和 Router 属性, 就返回
-            if (!(Object.keys(routerObj).length===0) || (!routerObj.default && !routerObj.Router)) return
-            if (Reflect.has(routerObj, "default")) {
-                router = routerObj.default!
-            } else {
-                router = routerObj.Router!
+            // routerObj 是一个导入到这里的路由对象
+            const imports = Object.keys(routerObj)
+            for (let i = 0; i < imports.length; i++) {
+                // 如果是 default 就取 default, 如果是 导出命名的接口, 就用这个接口的名字
+                // imports[i] 可以获取到接口的名字
+                router = routerObj[imports[i]]
+                app.use(router.routes())
+                app.use(router.allowedMethods())
             }
-            app.use(router.routes())
-            app.use(router.allowedMethods())
         })
     })
 }
