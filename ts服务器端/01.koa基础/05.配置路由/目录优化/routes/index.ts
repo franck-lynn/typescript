@@ -22,9 +22,6 @@ const readFilesName = (dir: string, ignore?: string[] | null, list: string[] = [
     return list
 }
 
-
-
-
 // 动态导入模块, 并将这些模块放在一个数组里面
 const loader = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
     // 获取文件名
@@ -33,30 +30,36 @@ const loader = (dir: string, ignore?: string[] | null, list: string[] = [], deep
     return files.map(async (filename: string) => {
         // console.log(filename)
         // 如果不是 ts 或者 js 文件就返回
-        if(/^.*(?<!\.ts|js)$/.test(filename)) return
+        if (/^.*(?<!\.ts|js)$/.test(filename)) return
         // console.log(filename)
         // const rs = await import("./index")
         // 返回 Promise 数组
-        return  await import(filename)
-       
-        // console.log(rs)
+        return await import(filename)
     })
 }
 
+interface ObjectRouter {
+    default?: Router<Koa.DefaultState, Koa.DefaultContext>
+    Router?: Router<Koa.DefaultState, Koa.DefaultContext>
+}
 
-
-const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, 
-    ignore: string[] = ["index.ts"]) => {
-    const routers =  loader(__dirname, ignore) 
-    //routers.forEach((router: Promise<Router<Koa.DefaultState, Koa.DefaultContext>>)  => {
-    routers.forEach((router)  => {
-        router.then(route => {
-            console.log("route是 ---> ", route)
-            const r = route.default
-            app.use(r.routes())
-            app.use(r.allowedMethods())
+// 默认忽略掉 index.ts 文件
+const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, ignore: string[] = ["index.ts"]) => {
+    const objectRouters = loader(__dirname, ignore)
+    objectRouters.forEach((routerPromise: Promise<ObjectRouter>) => {
+        routerPromise.then((routerObj: ObjectRouter) => {
+            let router: Router<Koa.DefaultState, Koa.DefaultContext>
+            if (!routerObj || (!routerObj.default && !routerObj.Router)) {
+                return
+            }
+            if (Reflect.has(routerObj, "default")) {
+                router = routerObj.default!
+            } else {
+                router = routerObj.Router!
+            }
+            app.use(router.routes())
+            app.use(router.allowedMethods())
         })
     })
-
 }
-export default routes 
+export default routes
