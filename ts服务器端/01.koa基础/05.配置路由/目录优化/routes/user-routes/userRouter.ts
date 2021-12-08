@@ -3,8 +3,8 @@ import Router from '@koa/router'
 
 const router = new Router()
 
-const indexRouter = router.get('/', async(ctx, next) => {
-    ctx.body = "主页路由"
+const userRouter = router.get('/user', async(ctx, next) => {
+    ctx.body = "用户路由"
 })
 
-export  default indexRouter 
+export  default userRouter 
