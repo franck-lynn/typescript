@@ -1,13 +1,11 @@
-// 动态的模块加载
-// 被加载的文件导出是有要求的, 只能导出一个,export default xxx 或者 export {} 都可以
-// import Koa from 'koa'
-// import Router from '@koa/router'
+import Koa from "koa"
+import Router from "@koa/router"
 import fs from "fs"
 import path from "path"
 
-const readFilesName = (dir: string, ignore: string | null = null, list: string[] = [], deep = 0) => {
+const readFilesName = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
     // 读取文件目录
-    const files = fs.readdirSync(dir, "utf-8")
+    const files = fs.readdirSync(dir)
     for (let i = 0; i < files.length; i++) {
         const stat = fs.statSync(dir + path.sep + files[i])
         if (stat.isDirectory()) {
@@ -15,36 +13,50 @@ const readFilesName = (dir: string, ignore: string | null = null, list: string[]
         } else {
             // 忽略掉第1层的要忽略的文件, 如不需要这个功能, 去掉 deep 即可
             // 数组, 字符串忽略都可以
-            if (!deep && ignore && ignore.indexOf(files[i]) !== -1) continue
+            // 是第1层级, 就是只有第1层级的文件名可以忽略掉, deep = 0 转化为 false
+            // 并且要忽略的数组存在, 数组的长度 > 0, 并且 忽略的这个文件名在这里面
+            if (!deep && ignore && ignore.length > 0 && ignore.indexOf(files[i]) !== -1) continue
             list.push(dir + path.sep + files[i])
         }
     }
     return list
 }
-console.log(readFilesName(__dirname, "index.ts"))
 
-// 动态导入模块
-// const loader = (dir: string, ignore: string | null = null, list: string[] = [], deep = 0) => {
-//     const files = readFilesName(dir, ignore, list, deep)
-//     return files.map(filename => {
-//         if (!/\.ts$/.test(filename)) return
-//         // eslint-disable-next-line @typescript-eslint/no-var-requires
-//         const rs = require(filename)
-//         return rs[Object.keys(rs)[0]]
-//     })
-// }
 
-// //* 自动加载 routes 文件夹下的路由文件
-// //! 要忽略掉 index.js 和 'loader.js 这2个不是路由的文件
-// //! routes 文件夹除了这2个文件外, 其他的 js 文件应该都是路由文件.
-// //! 自动导入的时候才不会报错
-// //! 把 mailer.js 文件也排除掉
-// const routers = loader(__dirname, null, ['index.ts' ])
 
-// const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
-//     routers.forEach((router: Router<Koa.DefaultState, Koa.DefaultContext>) => {
-//         app.use(router.routes())
-//         app.use(router.allowedMethods())
-//     })
-// }
-// export default routes
+
+// 动态导入模块, 并将这些模块放在一个数组里面
+const loader = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
+    // 获取文件名
+    const files = readFilesName(dir, ignore, list, deep)
+    // console.log(files)
+    return files.map(async (filename: string) => {
+        // console.log(filename)
+        // 如果不是 ts 或者 js 文件就返回
+        if(/^.*(?<!\.ts|js)$/.test(filename)) return
+        // console.log(filename)
+        // const rs = await import("./index")
+        // 返回 Promise 数组
+        return  await import(filename)
+       
+        // console.log(rs)
+    })
+}
+
+
+
+const routes = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, 
+    ignore: string[] = ["index.ts"]) => {
+    const routers =  loader(__dirname, ignore) 
+    //routers.forEach((router: Promise<Router<Koa.DefaultState, Koa.DefaultContext>>)  => {
+    routers.forEach((router)  => {
+        router.then(route => {
+            console.log("route是 ---> ", route)
+            const r = route.default
+            app.use(r.routes())
+            app.use(r.allowedMethods())
+        })
+    })
+
+}
+export default routes 
