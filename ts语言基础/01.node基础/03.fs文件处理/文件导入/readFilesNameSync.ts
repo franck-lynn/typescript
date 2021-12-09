@@ -11,7 +11,7 @@ const readFilesNameSync = (dir: string, ignore?: string[] | null, list: string[]
     // 读取第1层文件或文件夹路径, 得到的是一个路径数组
     const files = fs.readdirSync(dir)
     for (let i = 0; i < files.length; i++) {
-        // 所以, 遍历读取到的路径数组, 判读是文件名还是文件目录?
+         // 所以, 遍历读取到的路径数组, 判读是文件名还是文件目录?
         // 读取的路径信息
         const stat = fs.statSync(dir + path.sep + files[i])
         if (stat.isDirectory()) {
