@@ -42,6 +42,7 @@ const readFilesName = async(dir: string, ignore?: string[] | null, list: string[
     for (let i = 0; i < files.length; i++) {
         const stat = await fsPromise.stat(dir + path.sep + files[i])
         if (stat.isDirectory()) {
+            //! 这里也是异步, 要用到 await
             await readFilesName(dir + path.sep + files[i], ignore, list, deep + 1)
         }else{
             if (!deep && ignore && ignore.length > 0 && ignore.indexOf(files[i]) !== -1) continue
@@ -91,7 +92,6 @@ const loader = async(dir: string, ignore?: string[] | null, list: string[] = [],
     })
 }
 
-console.log("返回的是Promise---> ", loader(__dirname))
 
 // 默认忽略掉 index.ts 文件
 const routesSync = (app: Koa<Koa.DefaultState, Koa.DefaultContext>, ignore: string[] = ["index.ts"]) => {

@@ -35,7 +35,8 @@ const readFilesName = async(dir: string, ignore?: string[] | null, list: string[
     for (let i = 0; i < files.length; i++) {
         const stat = await fsPromise.stat(dir + path.sep + files[i])
         if (stat.isDirectory()) {
-            readFilesName(dir + path.sep + files[i], ignore, list, deep + 1)
+            //! 这里也是异步, 要用到 await
+            await readFilesName(dir + path.sep + files[i], ignore, list, deep + 1)
         }else{
             if (!deep && ignore && ignore.length > 0 && ignore.indexOf(files[i]) !== -1) continue
             list.push(dir + path.sep + files[i])
