@@ -1,13 +1,14 @@
 import Koa from 'koa'
-import dotenv from 'dotenv'
+
 import {routesSync, routes} from './routes'
 
+import { HOST_NAME, PORT } from './contstants'
 
 const app = new Koa()
 
 // 获取环境配置中的变量
-dotenv.config({path: '../.env' })
-const {HOST_NAME, PORT } = process.env
+// dotenv.config({path: '../.env' })
+// const {HOST_NAME, PORT } = process.env
 
 routes(app)
 
