@@ -1,0 +1,9 @@
+### url 要用双花括号
+### 点击 Send Request 时 窗口自动跳转到响应窗口, 点击右上角 ... 锁定组勾选上就可以了
+@url = http://localhost:3000
+
+### 测试简单路由1
+GET {{url}} HTTP/1.1
+
+### 测试简单路由2
+GET {{url}}/user HTTP/1.1
