@@ -1,6 +1,6 @@
 import Koa from 'koa'
 import dotenv from 'dotenv'
-import routes from './routes'
+import {routesSync, routes} from './routes'
 
 
 const app = new Koa()

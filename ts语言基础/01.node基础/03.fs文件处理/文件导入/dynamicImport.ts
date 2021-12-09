@@ -4,10 +4,10 @@
  * filename:  dynamicImport
  * 动态的文件导入
  */
-import { readFilesNameSync } from "./readFilesNameSync"
+import { readFilesNameSync, readFilesName } from "./readFilesName"
 
 // 动态导入模块, 并将这些模块放在一个数组里面
-const dynamicImport = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
+const dynamicImportSync = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
     // 获取文件名
     const files = readFilesNameSync(dir, ignore, list, deep)
     // console.log(files)
@@ -22,6 +22,18 @@ const dynamicImport = (dir: string, ignore?: string[] | null, list: string[] = [
     })
 }
 
+// const filesSync = dynamicImportSync(__dirname)
+// filesSync.map(filename => {
+//     filename!.then((v) =>{
+//         console.log(v)
+//     })
+// })
+
+
+const dynamicImport = async(dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
+    // 获取文件名
+    const files = await readFilesName(dir, ignore, list, deep)
+    console.log(files)
+}
+
 const files = dynamicImport(__dirname)
-
-

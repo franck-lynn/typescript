@@ -4,7 +4,8 @@
  * filename:  readFilesNameSync
  * 递归同步读取文件名
  */
-import fs from "fs"
+import fs from 'fs'
+import fsPromise from "fs/promises"
 import path from "path"
 
 const readFilesNameSync = (dir: string, ignore?: string[] | null, list: string[] = [], deep = 0) => {
@@ -29,4 +30,20 @@ const readFilesNameSync = (dir: string, ignore?: string[] | null, list: string[]
     return list
 }
 
-export { readFilesNameSync }
+const readFilesName = async(dir: string, ignore?: string[] | null, list: string[] = [], deep = 0)  => {
+    const files = await fsPromise.readdir(dir)
+    for (let i = 0; i < files.length; i++) {
+        const stat = await fsPromise.stat(dir + path.sep + files[i])
+        if (stat.isDirectory()) {
+            readFilesName(dir + path.sep + files[i], ignore, list, deep + 1)
+        }else{
+            if (!deep && ignore && ignore.length > 0 && ignore.indexOf(files[i]) !== -1) continue
+            list.push(dir + path.sep + files[i])
+        }
+    }
+    return list
+}
+
+
+
+export { readFilesNameSync, readFilesName }
