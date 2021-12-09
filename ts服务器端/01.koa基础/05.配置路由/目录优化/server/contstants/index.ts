@@ -8,7 +8,7 @@
 import dotenv from "dotenv"
 
 //! 这里的路径是以 app.ts 入口文件的路径开始计算的
-dotenv.config({ path: "../.env" })
+dotenv.config({ path: "../../.env" })
 
 const { HOST_NAME, PORT } = process.env
 export { HOST_NAME, PORT }
