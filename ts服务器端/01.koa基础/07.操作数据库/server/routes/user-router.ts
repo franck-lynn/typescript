@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import Router from "@koa/router"
 
-import IUser, { User } from "../models"
+import { User } from "../models"
 import { SECRET, BASEURL } from "../contstants"
 
 const userRouter = new Router()
@@ -21,7 +21,7 @@ userRouter.post("/register", async (ctx: Router.RouterContext, next: Koa.Next) =
     // 用户状态 status, 创建时间, 修改时间,
     // TODO: 如果没有注册过, 对密码明文进行加密加盐
     const pwd = await bcrypt.hash(password, 12)
-    const user: IUser = new User({ name, email, password: pwd, status: "pending" })
+    const user = new User({ name, email, password: pwd, status: "pending" })
     // 保存到数据库
     ctx.body = await user.save()
 
