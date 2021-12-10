@@ -2,12 +2,5 @@
 笔记
 config
 node_modules
-<<<<<<< HEAD
-
-**/*/node_modules
-**/*/.nyc_output
-**/*/coverage
-=======
-package.json
 config
->>>>>>> 32aeff51bf3aa294f773d476baffd3a177f39290
+
