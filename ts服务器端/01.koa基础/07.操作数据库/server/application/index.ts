@@ -1,7 +1,7 @@
 import Koa from "koa"
 import { routes } from "../routes"
 import bodyParser from 'koa-body'
-import { connectMongoDB } from '../service'
+import { connectMongoDB } from '../models'
 
 const app = new Koa()
 //! 连接数据库

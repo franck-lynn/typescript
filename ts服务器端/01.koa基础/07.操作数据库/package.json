@@ -1,0 +1,11 @@
+{
+  "name": "koa-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/main.ts",
+  "scripts": {
+    "dev": "nodemon -r esm server/main.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
