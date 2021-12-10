@@ -25,7 +25,7 @@ const userSchema = new Schema<IUser>({
 })
 
 // https://www.v2ex.com/amp/t/498008
-userSchema.pre('save', function(next) {
+userSchema.pre("save", function (next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updateAt = Date.now()
     } else {
@@ -37,4 +37,5 @@ userSchema.pre('save', function(next) {
 //! 3. 创建 model
 const User = model<IUser>("User", userSchema)
 
-export {User}
+export { User }
+export {IUser}
