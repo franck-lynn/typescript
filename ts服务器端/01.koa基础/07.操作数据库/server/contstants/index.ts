@@ -10,5 +10,5 @@ import dotenv from "dotenv"
 //! 这里的路径是以 package.json 文件的路径开始计算的
 dotenv.config({ path: "./.env" })
 
-const { HOST_NAME, PORT } = process.env
-export { HOST_NAME, PORT }
+const { HOST_NAME, PORT, MONGO_URI } = process.env
+export { HOST_NAME, PORT, MONGO_URI }
