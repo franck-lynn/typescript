@@ -1,0 +1,13 @@
+{
+  "name": "toplevel-await",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module", 
+  "main": "顶层await.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node --loader ts-node/esm 顶层await.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
