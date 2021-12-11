@@ -5,4 +5,8 @@ const createUser = async (input: AnyObject) => {
     return await User.create(input)
 }
 
-export { createUser }
+const findUser = async(name: string) => {
+    return User.findOne({name})
+}
+
+export { createUser, findUser }

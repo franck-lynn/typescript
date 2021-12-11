@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha --require ts-node/register ./test/*.test.ts",
-        "dev": "mocha --require ts-node/register test/**/**.test.ts"
+        "dev": "mocha --require ts-node/register test/**/*.test.ts"
     },
     "mocha": {
         "require": [
