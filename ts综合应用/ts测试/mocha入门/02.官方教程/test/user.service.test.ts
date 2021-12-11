@@ -1,5 +1,6 @@
-import { expect } from "chai"
+
 import mongoose from "mongoose"
+import { expect } from "chai"
 import { User } from "src/models/user.model"
 import { createUser } from "../src/services/user.service"
 
