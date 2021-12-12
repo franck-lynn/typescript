@@ -21,9 +21,9 @@ describe("User 的数据库文档", function () {
         })
          */
         it("02. 查询一个用户", async () => {
-            const name = 'Luna'
+            const name = 'zzr'
             const user = await findUser(name)
-            expect(user!.name).to.be.equal('Luna')
+            expect(user!.name).to.be.equal('zzr')
         })
     })
 })
