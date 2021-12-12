@@ -1,7 +1,0 @@
-{
-    "name": "mocha-test-config",
-    "version": "0.0.1",
-    "scripts": {
-        "test": "mocha --require ts-node/register test/**/*.test.ts"
-    }
-}
