@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose"
 import { expect } from "chai"
-import { User } from "src/models/user.model"
+import { User } from "../src/models/user.model"
 import { createUser, findUser } from "../src/services/user.service"
 
 before(async () => {
@@ -31,3 +31,6 @@ describe("User 的数据库文档测试", function () {
 after(async () => {
     mongoose.disconnect()
 })
+
+
+// supertest tsconfig-paths
