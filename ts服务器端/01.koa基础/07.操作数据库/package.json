@@ -1,11 +1,19 @@
 {
-  "name": "koa-mongodb",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/main.ts",
-  "scripts": {
-    "dev": "nodemon -r esm server/main.ts"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "koa-mongodb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/main.ts",
+    "scripts": {
+        "dev": "nodemon -r esm server/main.ts",
+        "test": "mocha --require ts-node/register test/mocha/**/*.test.ts"
+    },
+    "mocha": {
+        "require": [
+            "ts-node/register",
+            "tsconfig-paths/register"
+        ],
+        "ui": "bdd"
+    },
+    "author": "",
+    "license": "ISC"
 }

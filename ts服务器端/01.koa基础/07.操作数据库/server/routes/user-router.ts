@@ -1,10 +1,10 @@
-import Koa from "koa"
-import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
+// import Koa from "koa"
+// import bcrypt from "bcryptjs"
+// import jwt from "jsonwebtoken"
 import Router from "@koa/router"
 
 import { registerUser } from "../services"
-import { SECRET, BASEURL } from "../contstants"
+// import { SECRET, BASEURL } from "../contstants"
 
 const userRouter = new Router()
 

@@ -32,10 +32,11 @@ const registerUser = async (ctx: Router.RouterContext, next: Koa.Next) => {
     const { name, email, password } = ctx.request.body
     const hasEmail = await findUser({email})
     if(hasEmail){
-        return (ctx.body = { msg: "已经注册过了" })
+        ctx.body = { msg: "已经注册过了" }
     }else{
         ctx.body = await createUser({name, email, password})
     }
+    return ctx.body
 }
 export {createUser,findUser, deleteAllUser, loginUser, registerUser}
 
