@@ -10,4 +10,3 @@ const connectMongoDB = () => {
 }
 
 export { connectMongoDB }
-export { User } from "./user"
