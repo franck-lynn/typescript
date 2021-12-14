@@ -27,7 +27,7 @@ const userSchema = new Schema<UserDocument>({
     },
     avatar: { type: String },
 })
-
+userSchema.index({email: 1})
 // https://www.v2ex.com/amp/t/498008
 userSchema.pre("save", async function (this: UserDocument, next: (err?: CallbackError) => void) {
     // 修改时间
