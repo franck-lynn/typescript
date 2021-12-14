@@ -28,14 +28,7 @@ describe("一. 测试 user.service.ts", function () {
             })
         })
     })
-
-    // describe("02. 测试 registerUser() 方法", function () {
-    //     describe("从客户端输入 name, password, email", function () {
-    //         it("会注册一个用户", async () => {
-    //             const user = await registerUser()
-    //         })
-    //     })
-    // })
+    
     
 })
 
