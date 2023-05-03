@@ -1,0 +1,21 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "server, client concurrently use this package.json",
+  "main": "",
+  "scripts": {
+    "dev": "vite client",
+    "client:dev": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm client/src/index.ts --watch client/src",
+    "server": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts --watch server/src ",
+    "server:dev": "cross-env NODE_ENV=development nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts --watch server/src ",
+    "server:commonjs": "nodemon -r esm -r tsconfig-paths/register server/src/main.ts --watch server/src ",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "codegen:server": "concurrently \"npm run server\"  \"npm run codegen\"",
+    "codegen:yml": "graphql-codegen --config codegen.yml --watch",
+    "codegen": "graphql-codegen-esm  --config codegen.ts --watch",
+    "codegen:client": "concurrently \"npm run dev\"  \"npm run codegen\"",
+    "test": "concurrently \"npm run dev\" \"npm run server\" \"npm run codegen\""
+  },
+  "author": "lynn",
+  "license": "ISC"
+}

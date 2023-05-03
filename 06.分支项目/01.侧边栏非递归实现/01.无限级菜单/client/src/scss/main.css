@@ -1,0 +1,25 @@
+/* 
+    定义的 mixin 需要在每个文件进行导入, 导入到 global.css 和 main.css
+    并不是全局的, 这点和 scss 是不同的, 但是语法由于是 scss 文件, 所以定义
+    mixin 还是和 scss 相同的 
+*/
+@import "./styles/mixins.css";
+/* 需要在具体的文件导入变量文件 */
+/* 先归拢到 main.scss, 然后再在每个文件中导入, 这样也能实现全局变量 */
+@import "./styles/variables.css";
+@import "./styles/normalize.css";
+@import "./iconfont/iconfont.css";
+/* 通用字体 */
+@import "vfonts/Lato.css";
+/* 等宽字体 */
+@import "vfonts/FiraCode.css";
+@import "./styles/mixins.css";
+
+@tailwind base;
+@tailwind components;
+
+.btn {
+  @apply font-semibold text-white py-2 px-4 rounded-full;
+}
+
+@tailwind utilities;

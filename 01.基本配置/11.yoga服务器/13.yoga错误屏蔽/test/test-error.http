@@ -1,0 +1,23 @@
+@url = http://localhost:3000/graphql
+
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+x-foo: iliketurtles
+
+{
+  greeting
+}
+
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+x-foo: iliketurtles
+
+{
+  user(byId: "6") {
+    id
+  }
+}

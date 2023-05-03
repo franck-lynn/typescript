@@ -1,0 +1,43 @@
+@url = http://localhost:3000/graphql
+
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+authorization: 1
+
+{
+  user(id: "1"){
+    id 
+  }
+}
+
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  feed{
+    id
+    url
+    description
+  }
+}
+
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  postLink(
+    url: "www.prisma.io"
+    description: "Prisma replaces traditional ORMs"
+  ){
+    id
+    url
+    description
+  }
+}
+

@@ -1,0 +1,11 @@
+import t from "./"
+// console.log(t(100.0))
+// console.log(t(12000010.0))
+// console.log("3--> ", t(100200000001.0))
+// console.log(t(345225.54))
+// console.log(t(95487.65))
+// console.log(t(8791231.91))
+// console.log(t(56478897.0))
+// console.log(t(0))
+console.log(t(0.98))
+console.log("4--> ", t(10000000000000.0))

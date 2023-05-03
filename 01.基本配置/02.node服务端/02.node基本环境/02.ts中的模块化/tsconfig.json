@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist", // 编译后的文件目录
+    "target": "ES6", // 编译后的文件的目标版本
+    "module": "esnext", // 配置编译目标使用的模块化标准
+    "allowJs": true, // 可以导入第3方的 js 文件
+    // 使用 module.exports = xxx 这样的导出的文件
+    // 运行从没有设置默认导出的模块中默认导入,
+    "allowSyntheticDefaultImports": true,
+    // 上面这行虽然可以解决编译过程中的检测问题, 但是, 编译后的具体要运行
+    // 的代码还是有问题的, 还要加上
+    // 则在编译的同时, 生成一个 __importDefault 函数, 用来处理具体的 default
+    // 默认导出.
+    // 注意, 以上设置只能是 module 不为 es6+ 的情况下有效.如果是 es6+ 则不需要
+    // 这样麻烦.
+    "esModuleInterop": true,
+    "resolveJsonModule": true, // 可以导入json
+    "moduleResolution": "node" // 按照 node 模块加载器的方式导入导出
+  },
+
+  "include": ["server/src/**/*"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "server, client concurrently use this package.json",
+  "main": "",
+  "scripts": {
+    "dev": "nodemon -r esm client/src/index.ts",
+    "server": "nodemon  -r esm server/src/main.ts"
+  },
+  "author": "lynn",
+  "license": "ISC"
+}

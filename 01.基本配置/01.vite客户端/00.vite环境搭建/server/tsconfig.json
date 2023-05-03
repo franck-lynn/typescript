@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    // "module": "commonjs",
+    "module": "esnext",
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "dist",
+    "types": ["node"],
+    "esModuleInterop": true,
+    "paths": {
+      //   路径别名
+      "@/": ["/src/*"],
+      "db/*": ["/src/db/*"]
+    }
+  }
+}

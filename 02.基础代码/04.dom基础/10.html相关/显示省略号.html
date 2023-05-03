@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="data:;base64,=" type="image/x-icon" />
+    <style>
+#wrap {
+    display: flex;
+    width: 220px;
+    border: 1px solid black;
+}
+#left {
+  display: flex;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+#right {
+    flex: 1;
+    background: yellow;
+    overflow: hidden;
+}
+.content  {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: red;
+}
+    </style>
+    <title>显示省略号</title>
+  </head>
+  <body>
+    <div>
+      <div id="wrap">
+        <img alt="XXX" id="left" src="img1.jpg" />
+        <div id="right">
+            <p class="name">昵称</p>
+            <p class="content">内容显示省略号内容显示省略号内容显示省略号内容显示省略号</p>
+        </div>
+    </div>
+  </body>
+</html>

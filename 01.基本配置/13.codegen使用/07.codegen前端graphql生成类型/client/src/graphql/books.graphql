@@ -1,0 +1,15 @@
+query ShowBooks {
+  app {
+    books {
+      id
+      title
+    }
+  }
+}
+
+mutation CreateBook($title: String!) {
+  createBook(bookInput: { title: $title }) {
+    id
+    title
+  }
+}

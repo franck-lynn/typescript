@@ -1,0 +1,12 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "vite --config vite.config.ts",
+    "client:dev": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts --watch src "
+  },
+  "author": "",
+  "license": "ISC"
+}

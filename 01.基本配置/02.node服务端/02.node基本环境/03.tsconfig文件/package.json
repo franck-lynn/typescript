@@ -1,0 +1,13 @@
+{
+  "name": "node-module",
+  "version": "1.0.0",
+  "description": "tsconfig的配置与执行",
+  "main": "server/src/main.ts",
+  "type": "module",
+  "scripts": {
+    "test": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts",
+    "server": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts --watch server/src "
+  },
+  "author": "",
+  "license": "ISC"
+}

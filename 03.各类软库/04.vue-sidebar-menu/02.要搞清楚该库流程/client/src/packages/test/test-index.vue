@@ -1,0 +1,29 @@
+<script setup lang="ts"></script>
+<template>
+  <c2-horizontal-movable>
+    <template #c2-resizeable-left="{ isNarrow }">
+      <div class="sidebar-logo">
+        <sidebar-logo :is-narrow="isNarrow" />
+      </div>
+      <div class="sideup-menus">
+        <sideup-index :is-narrow="isNarrow" />
+      </div>
+    </template>
+
+    <template #c2-resizeable-right>
+      <main-container-layout>
+        <template #main-container>
+          <router-view></router-view>
+        </template>
+      </main-container-layout>
+    </template>
+  </c2-horizontal-movable>
+</template>
+
+<style scoped>
+.sideup-menus {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+</style>

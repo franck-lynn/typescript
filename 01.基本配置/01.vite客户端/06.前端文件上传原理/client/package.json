@@ -1,0 +1,11 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "vite --config vite.config.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}

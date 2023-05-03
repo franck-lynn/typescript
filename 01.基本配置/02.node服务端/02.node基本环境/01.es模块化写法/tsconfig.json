@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 配置编译目标代码的版本标准
+    "module": "esnext", // 配置编译目标使用的模块化标准
+    "lib": ["es2016"], // 表示默认详情下ts使用的是那一个环境
+    "outDir": "./dist", // 编译结构的目录,
+    "strictNullChecks": true, // ts检查变量是否null
+    "removeComments": true, // 编译结构是否移除注释
+    "noImplicitUseStrict": true, //编译结果中是否有 "use strict"
+    "moduleResolution": "node",
+    // 启用es模块化交互非 es 模块导出,
+    "esModuleInterop": true
+  },
+  "include": ["server/src/main.ts"]
+}

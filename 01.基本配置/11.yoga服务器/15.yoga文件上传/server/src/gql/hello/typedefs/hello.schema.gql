@@ -1,0 +1,33 @@
+scalar MyDate
+
+type Book {
+  id: Int!
+  title: String
+  author: Author
+}
+type Author {
+  id: Int!
+  name: String! @auth # Can't return null
+  """
+  作者作品的列表
+  """
+  books: [Book]
+}
+# 查询类型是客户端对服务器执行查询的顶级入口点
+type Query {
+  hello: String @upper # 简单的打招呼
+  helloworld: String @auth # 需要授权的打招呼
+  yesterday: MyDate
+  doSomethingYesterday(before: MyDate): MyDate
+  sayByeYesterday(before: MyDate): String
+  # today: Date
+  # tomorrow: Date
+  today: MyDate
+  tomorrow: MyDate
+  books: [Book]
+  author(_id: Int!): Author
+  authors: [Author]
+}
+type Mutation {
+  findAuthor(_id: Int!): Author
+}

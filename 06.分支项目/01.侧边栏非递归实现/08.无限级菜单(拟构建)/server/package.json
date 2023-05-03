@@ -1,0 +1,15 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "a simple image static server",
+  "main": "main.ts",
+  "scripts": {
+    "build": "rimraf dist && npx tsc && xcopy /s /y src\\*.gql dist\\",
+    "prestart": "npm run build",
+    "start": "node dist/main.js",
+    "preserve": "npm run build",
+    "serve": "concurrently \"npx tsc -w\" \"nodemon dist/main.js\""
+  },
+  "author": "",
+  "license": "ISC"
+}

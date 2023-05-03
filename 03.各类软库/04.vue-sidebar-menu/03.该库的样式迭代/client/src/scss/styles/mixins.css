@@ -1,0 +1,104 @@
+/* https://npmmirror.com/package/postcss-custom-media */
+@custom-media --xs (max-width: 480px);
+@custom-media --sm (max-width: 576px);
+@custom-media --md (max-width: 768px);
+@custom-media --lg (max-width: 929px);
+@custom-media --xl (max-width: 1200px);
+@custom-media --xxl (max-width: 1400px);
+
+@define-mixin triangle-left {
+  --height-sub-nav: 40px;
+  --little-triangle-width: 4px;
+  --color-tabs-btn: #65cea7; /* 图标悬停或者是当前状态时的字体颜色 */
+  position: absolute;
+  content: ""; /* 下拉菜单的向上小三角符号 */
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: var(--little-triangle-width);
+  border-style: dashed dashed solid dashed;
+  border-color: transparent var(--color-tabs-btn) transparent transparent;
+  /* top: calc(var(--height-sub-nav) / 4);  40-4/2*/
+
+  top: calc((var(--height-sub-nav) / 2 - var(--little-triangle-width)));
+  /* top: 14px; */
+  left: calc(-2 * var(--little-triangle-width));
+}
+
+@define-mixin triangle-up {
+  --little-triangle-width: 4px;
+  --color-tabs-btn: #65cea7; /* 图标悬停或者是当前状态时的字体颜色 */
+  position: absolute;
+  content: ""; /* 下拉菜单的向上小三角符号 */
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: var(--little-triangle-width);
+  border-style: dashed dashed solid dashed;
+  border-color: transparent transparent var(--color-tabs-btn) transparent;
+  top: -2 * var(--little-triangle-width);
+  right: 20px;
+}
+
+/* 定义模块变量, 类似 mixin */
+@define-mixin arrow {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid rgb(255 255 255 / 50%);
+  border-left: 2px solid rgb(255 255 255 / 50%);
+  content: "";
+  transform: rotate(225deg);
+}
+
+/* 通过伪类达到 data-tip 提示效果 */
+@define-mixin data-tip-up {
+  /** 
+  在类下使用, 例如: .item-title:hover {
+    @mixin data-tip-up;
+  }
+  */
+  /* 1. 通过属性选择器获取到标签, 加上相对定位 */
+  /*  &[data-tip] {
+    position: relative;
+  } */
+  /* 统一设置伪类样式 */
+  /*   &[data-tip]::before, */
+  &[data-tip]::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    font-size: 18px;
+    padding: 8px 14px;
+    color: #ffffff;
+    background-color: #262626;
+    content: attr(data-tip);
+    transform: translateY(-100%);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    opacity: 1;
+    animation: hidden 0.4s ease 0.4s;
+  }
+  /* 当data-tip 没有内容的时候隐藏 */
+  /*   &[data-tip=""]::before, */
+  &[data-tip=""]::after {
+    display: none !important;
+  }
+}
+@keyframes hidden {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,23 @@
+@url = http://localhost:3000/graphql
+###
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+{
+  greetings
+}
+### 
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation($file: Upload!){
+    singleUpload (file: $file){
+      url
+    }
+}
+
+{
+  "file":   "./img5.jpg"
+}

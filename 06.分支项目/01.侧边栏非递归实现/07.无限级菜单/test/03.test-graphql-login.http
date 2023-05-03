@@ -1,0 +1,21 @@
+@url = http://localhost:3000/graphql
+### 登录测试, 并保存响应值到变量  login 
+# @name login
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation($loginInput: LoginInput!){
+  login(loginInput: $loginInput){
+    msg
+    status
+    token
+  }
+}
+
+{
+  "loginInput": { 
+    "email": "lry_demry@163.com",
+    "password": "123456A["
+  }
+}

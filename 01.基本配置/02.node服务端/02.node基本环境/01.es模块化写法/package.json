@@ -1,0 +1,13 @@
+{
+  "name": "module-study",
+  "version": "1.0.0",
+  "description": "es模块化",
+  "main": "server/src/main.ts",
+  "type": "module",
+  "scripts": {
+    "test": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts --project server/tsconfig.json",
+    "server": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm server/src/main.ts --watch server/src  --project server/tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

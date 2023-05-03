@@ -1,0 +1,91 @@
+@import url("../variables.css");
+
+.v-sidebar-menu.vsm_white-theme {
+  background-color: var(--base-bg);
+  .vsm--link {
+    color: var(--item-color);
+    &_active {
+      color: var(--item-active-color);
+      background-color: var(--item-active-bg);
+    }
+    &_level-1 {
+      &.vsm--link_active {
+        box-shadow: 3px 0px 0px 0px var(--item-active-line-color) inset;
+        & .vsm--icon {
+          color: var(--icon-active-color);
+          background-color: var(--icon-active-bg);
+        }
+      }
+      & .vsm--icon {
+        background-color: var(--icon-bg);
+      }
+    }
+    &_hover {
+      color: var(--item-hover-color);
+      background-color: var(--item-hover-bg);
+    }
+    &_mobile {
+      color: var(--mobile-item-color);
+    }
+  }
+
+  &.vsm_expanded {
+    .vsm--link_level-1 {
+      &.vsm--link_open {
+        color: var(--item-open-color);
+        background-color: var(--item-open-bg);
+        & .vsm--icon {
+          color: var(--icon-open-color);
+          background-color: var(--icon-open-bg);
+        }
+      }
+    }
+  }
+
+  &.vsm_collapsed {
+    .vsm--link_level-1 {
+      &.vsm--link_hover {
+        .vsm--icon {
+          color: var(--mobile-icon-color);
+          background-color: var(--mobile-icon-bg);
+        }
+      }
+    }
+  }
+
+  .vsm--icon {
+    color: var(--icon-color);
+  }
+
+  .vsm--dropdown {
+    background-color: var(--dropdown-bg);
+    & .vsm--link {
+      color: var(--dropdown-color);
+    }
+    & .vsm--icon {
+      color: var(--dropdown-color);
+    }
+  }
+
+  .vsm--mobile-bg {
+    background-color: var(--mobile-item-bg);
+  }
+
+  &.vsm_rtl {
+    .vsm--link_level-1.vsm--link_active {
+      box-shadow: -3px 0px 0px 0px var(--item-active-line-color) inset;
+    }
+  }
+
+  .vsm--header {
+    color: var(--header-item-color);
+  }
+  .vsm--badge_default {
+    color: var(--item-color);
+    background-color: darken(var(--base-bg), 5%);
+  }
+  .vsm--toggle-btn {
+    color: var(--toggle-btn-color);
+    background-color: var(--toggle-btn-bg);
+  }
+}

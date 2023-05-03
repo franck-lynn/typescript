@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="data:;base64,=" type="image/x-icon" />
+    <title>01.创建Blob</title>
+  </head>
+  <body>
+    <input type="file" id="id" />
+
+    <script>
+      const blob = new Blob(["helloworld"], { type: "text/plain" })
+      console.log("blob只有2个属性", blob)
+
+      // 切到 3, 到 hel, 前面3个, 后一个不算 [0, 3)
+      let newBlob = blob.slice(0, 3)
+
+      const oInput = document.getElementById("id")
+
+      oInput.onchange = function (e) {
+        const file = e.target.files[0]
+        // 只能用 fileReader 读取, 只能在浏览器环境中运行
+
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = function (e) {
+          console.log(e.target.result)
+        }
+      }
+
+      const reader2 = new FileReader()
+      reader2.readAsText(newBlob)
+      reader2.onload = function (e) {
+        console.log(e.target.result)
+      }
+    </script>
+  </body>
+</html>

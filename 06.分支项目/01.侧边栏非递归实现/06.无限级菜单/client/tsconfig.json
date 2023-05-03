@@ -1,0 +1,73 @@
+{
+  // https://zhuanlan.zhihu.com/p/505649091
+  // https://www.typescriptlang.org/zh/tsconfig
+  "compilerOptions": {
+    // "jsx": "preserve",
+    // 编译选项
+    // form.entries(), form 表单定义了 entries 接口, 但报错没有定义 entries(), 所以加上 DOM.Iterable
+    "lib": ["esnext", "DOM", "DOM.Iterable"], // 指定项目中用到的库. ts 包含一组内建的库, 这些库定义了一些类型接口, 可以直接拿来使用
+    "moduleResolution": "node", // 指定模块解析策略, 不用这个的话, import vue from 'vue' 会提示找不到模块
+    // "allowUnreachableCode": false, // 不可到达的代码检查, false 表示不允许. 这个在 eslint 中也可以检查
+    // "allowUnusedLabels": false, // 是否允许没有使用的变量, false 表示不允许
+    "strict": true, // 开启所有严格的类型检查
+    "removeComments": true,
+    // **********************模块部分**************************
+    "baseUrl": "./", // 意思是导入模块时, 可以少写 ../ 或者 ./
+    "target": "esnext", // 指定 ts 被编译成的版本
+    // 指定要使用的模块化的规范, 如果出现导入 es6 模块错误, 改成 commonjs 模块
+    // 前端导出的是 commonjs 模块, 引用 es6 模块可能会出现这种情况
+    "module": "ESNext",
+    "resolveJsonModule": true, // 可以解析 json 文件
+    "esModuleInterop": true,
+    "paths": {
+      // 如果指定 paths 模块, 则 baseUrl 必须要指定, 这样, 在导入时
+      // import ??? from 'component/???' 就不报错了, 与 vite 里的别名不同
+      // 这里指定了, vite 里面还要指定
+      "typings/*": ["./src/typings/*"], // 相对路径, 如果不设置 baseUrl, 则要加 ./, 如: typings/*": ["./src/typings/*"],
+      // "~/*": ["F:/node/node_modules/"], // post css 用这个不行
+      "@/*": ["./src/*"], // ./src/*要加个 *
+      "components/*": ["./src/components"],
+      "packages/*": ["./src/packages"],
+      "scss/*": ["./src/scss/"]
+    },
+    "allowSyntheticDefaultImports": true,
+    // "typeRoots": [], // 类型根路径, 默认情况下，所有 可见 的 ”@types” 包都将包含在你的编译过程中, 在 node_modules/@types 中的任何包都被认为是 可见 的
+    // types: [] // 默认情况下，所有 可见 的 ”@types” 包都将包含在你的编译过程中
+    // import.meta.glob 会报 没有 glob 属性错误,
+    // component: () => import("@/packages/about/index.vue") 会报不是模块错误,加上 "types": ["vite/client"], 解决这个问题
+    // https://futurestud.io/tutorials/vite-resolve-import-meta-glob-in-typescript
+    "types": ["vite/client"],
+    // **********************Emit部分**************************
+    "noEmit": true, // 禁止编译器生成文件，例如 JavaScript 代码，source-map 或声明
+    // **********************JavaScript Support部分**************************
+    "allowJs": true, // 引入(import) js 到 ts 不会报错
+    "checkJs": true, // 与 allowJs 配合使用,当 checkJs 被启用时,JavaScript 文件中会报告错误, 当于在项目中所有 JavaScript 文件顶部包含 // @ts-check
+
+    // **********************类型检查部分**************************
+    // https://zhuanlan.zhihu.com/p/505649091
+    "exactOptionalPropertyTypes": false, // 为 true 时, 在接口中定义可选属性时不能被赋值为 undefined
+    "noFallthroughCasesInSwitch": true, // 不允许 switch 表达式中存在贯穿, 即要 break 或者 return
+    "noImplicitAny": false, // typescript 会提供一个兜底类型 any 给那些没有声明类型且无法推断出类型的属性
+    "noImplicitOverride": true, // 当子类重写父类方法时，需要在重写的方法前添加 override, 否则报错
+    // "noImplicitReturns": true, // 禁止代码块有不明确的返回值.true: 禁止; false: 忽略
+    // "noImplicitThis": true, 禁止函数内部使用没有明确类型的this, true: 禁止; false: 忽略
+    "noPropertyAccessFromIndexSignature": true, // 访问索引签名定义的属性，以便提醒使用者该属性不一定存在
+    "strictPropertyInitialization": true, // 检查类属性是否需要初始化
+    "useUnknownInCatchVariables": true, // 为 true ，catch 块中的 error 参数类型设置为 unknown, 要使用 e.message, 就必须指定类型
+    "noUncheckedIndexedAccess": true, // 为 true 时，当使用索引属性时，会默认为索引属性添加`undefined`属性值
+    "noUnusedLocals": true, // 为 true 时，当存在未使用的局部变量时，会抛出错误
+    "noUnusedParameters": true, // 为 true 时，当存在未使用的参数时，会抛出错误
+    "strictBindCallApply": true, // 为 true ，当使用`call`、`bind`、`apply`调用函数时，提供正确的类型检查
+    "strictFunctionTypes": true, // 为 true ，对函数参数类型严格把控
+    "strictNullChecks": true // 为 true ，对`null` 和 `undefined` 类型严格把控
+    // **********************跳过库检查 **************************
+    // "skipLibCheck": true
+  },
+  "outDir": "/", // 输出目录, 指定编译后的js 文件所在目录
+  "include": [
+    "src/**/*",
+    "../test/test-backup/test-apollo-send-data-copy.vue.ts",
+    "../../../笔记/算法/应用算法/树形结构/data.js"
+  ], // 哪些 ts 文件需要编译, src 目录及子目录下的所有文件需要编译
+  "exclude": ["node_modules"] // 要排除的文件的目录, 这个目录下的文件不编译
+}

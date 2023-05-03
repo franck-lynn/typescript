@@ -1,0 +1,12 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "server, client concurrently use this package.json",
+  "main": "./server/main.ts",
+  "scripts": {
+    "build": "cd server && npm run build",
+    "start": "cd server && npm run serve"
+  },
+  "author": "lynn",
+  "license": "ISC"
+}

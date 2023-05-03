@@ -1,0 +1,11 @@
+{
+  "name": "alchemilla",
+  "version": "1.0.0",
+  "description": "server, client concurrently use this package.json",
+  "main": "",
+  "scripts": {
+    "dev": "vite client"
+  },
+  "author": "lynn",
+  "license": "ISC"
+}

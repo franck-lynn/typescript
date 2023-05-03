@@ -1,0 +1,41 @@
+# https://the-guild.dev/graphql/codegen/docs/getting-started
+# https://the-guild.dev/blog/graphql-typescript-modules-codegen
+# 预设的配置
+# https://the-guild.dev/graphql/codegen/plugins/presets/graphql-modules-preset
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+# 服务器返回的信息模式
+type ResponseInfo {
+  status: Int
+  msg: String
+  token: String
+}
+# 注册时输入的信息模式,  类型是 input 类型
+input RegisterInput {
+  name: String!
+  email: String!
+  password: String!
+}
+# 登录时输入的信息模式, 类型是 input 类型
+input LoginInput {
+  email: String!
+  password: String!
+}
+# !这里的 type Query 一定要的, 否则, code generator 会报错
+type Query {
+  allUsers: [User]
+  user(_id: ID!): User
+}
+type Mutation {
+  # 正式登录
+  login(loginInput: LoginInput!): ResponseInfo
+  # 正式注册
+  register(registerInput: RegisterInput!): ResponseInfo
+  # 密码重置是发送邮件 password-reset.vue 文件 负责发送这个请求
+  hasEmail(email: String!): ResponseInfo
+  sendEmail(email: String!): ResponseInfo
+}

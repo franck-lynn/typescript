@@ -1,0 +1,7 @@
+@url = http://localhost:3000 
+### 
+GET  {{url}} HTTP/1.1
+Content-Type: application/json
+
+### 
+GET  {{url}}/ad?id=8&name=keven#tag=1 HTTP/1.1

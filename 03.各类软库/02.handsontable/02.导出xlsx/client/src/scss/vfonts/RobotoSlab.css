@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "v-sans";
+  font-weight: 400;
+  src: url("./assets/RobotoSlab-Regular.ttf");
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "v-sans";
+  font-weight: 500;
+  src: url("./assets/RobotoSlab-Medium.ttf");
+  font-display: auto;
+}
