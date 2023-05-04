@@ -50,10 +50,16 @@ const config: CodegenConfig = {
     },
 
     // 为 test 测试 生成相关 typescript 代码和类型定义. 我用 graphql 文件夹表示对前端的输出, gql 文件为后端的输出
-    "./test/src/graphql/": { 
+    "./test/src/graphql/index.ts": {
       schema: "./test/src/yoga.ts",
       documents: ["./test/src/**/*.ts"],
-      preset: "client-preset",
+      // preset: "client", // client-preset 预设会将导入导入带上后缀名, jest 测试会报错
+      plugins: [
+        { add: { content: "/* eslint-disable */" } },
+        "typescript",
+        "typescript-operations",
+        "typescript-vue-urql",
+      ],
     },
   },
 }

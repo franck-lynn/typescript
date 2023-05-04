@@ -8,7 +8,8 @@
     "start": "cd server && npm run serve",
     "codegen": "graphql-codegen-esm  --config codegen.ts --watch",
     "test": "concurrently  \"npm run start\" \"npm run codegen\"",
-    "jest": "cd test && npm run test"
+    "jest-codegen": "concurrently \"npm run codegen\" \"cd test && npm run jest\"",
+    "jest": "cd test && npm run jest"
   },
   "author": "lynn",
   "license": "ISC"

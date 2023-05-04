@@ -1,7 +1,6 @@
 {
   "name": "yoga-tests",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "jest": "jest --no-cache"
   }

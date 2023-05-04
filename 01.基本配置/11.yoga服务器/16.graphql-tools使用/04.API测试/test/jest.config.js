@@ -2,6 +2,7 @@
 module.exports = {
   // 指定 Jest 运行环境为 node 环境. 可用的选项有 node、jsdom等
   testEnvironment: "node",
+  moduleNameMapper: { "^/(.*)\\.js$": "./$1" },
   // 指定 Jest 在运行测试文件之前，将 TypeScript 文件转换为 JavaScript 文件
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
